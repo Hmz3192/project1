@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmz.web.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.hmz.web.model.Goods">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="good_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="good_essay" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="good_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="upload_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="begin_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="less_money" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="one_time_money" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="url1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="url2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="url3" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="yikoujia" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="state" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="end_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, good_name, good_essay, good_price, url, upload_time, begin_time, less_money, 
+    one_time_money, url1, url2, url3, yikoujia, num, state, end_time
+  </sql>
+  <select id="selectByExample" parameterType="com.hmz.web.model.GoodsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hmz.web.model.GoodsExample">
+    delete from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hmz.web.model.Goods">
+    insert into goods (id, good_name, good_essay, 
+      good_price, url, upload_time, 
+      begin_time, less_money, one_time_money, 
+      url1, url2, url3, yikoujia, 
+      num, state, end_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{goodName,jdbcType=VARCHAR}, #{goodEssay,jdbcType=VARCHAR}, 
+      #{goodPrice,jdbcType=DECIMAL}, #{url,jdbcType=VARCHAR}, #{uploadTime,jdbcType=VARCHAR}, 
+      #{beginTime,jdbcType=VARCHAR}, #{lessMoney,jdbcType=VARCHAR}, #{oneTimeMoney,jdbcType=VARCHAR}, 
+      #{url1,jdbcType=VARCHAR}, #{url2,jdbcType=VARCHAR}, #{url3,jdbcType=VARCHAR}, #{yikoujia,jdbcType=VARCHAR}, 
+      #{num,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{endTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hmz.web.model.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodName != null">
+        good_name,
+      </if>
+      <if test="goodEssay != null">
+        good_essay,
+      </if>
+      <if test="goodPrice != null">
+        good_price,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="uploadTime != null">
+        upload_time,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="lessMoney != null">
+        less_money,
+      </if>
+      <if test="oneTimeMoney != null">
+        one_time_money,
+      </if>
+      <if test="url1 != null">
+        url1,
+      </if>
+      <if test="url2 != null">
+        url2,
+      </if>
+      <if test="url3 != null">
+        url3,
+      </if>
+      <if test="yikoujia != null">
+        yikoujia,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodName != null">
+        #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodEssay != null">
+        #{goodEssay,jdbcType=VARCHAR},
+      </if>
+      <if test="goodPrice != null">
+        #{goodPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        #{uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lessMoney != null">
+        #{lessMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="oneTimeMoney != null">
+        #{oneTimeMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="url1 != null">
+        #{url1,jdbcType=VARCHAR},
+      </if>
+      <if test="url2 != null">
+        #{url2,jdbcType=VARCHAR},
+      </if>
+      <if test="url3 != null">
+        #{url3,jdbcType=VARCHAR},
+      </if>
+      <if test="yikoujia != null">
+        #{yikoujia,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hmz.web.model.GoodsExample" resultType="java.lang.Long">
+    select count(*) from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update goods
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodName != null">
+        good_name = #{record.goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodEssay != null">
+        good_essay = #{record.goodEssay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodPrice != null">
+        good_price = #{record.goodPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadTime != null">
+        upload_time = #{record.uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beginTime != null">
+        begin_time = #{record.beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lessMoney != null">
+        less_money = #{record.lessMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oneTimeMoney != null">
+        one_time_money = #{record.oneTimeMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url1 != null">
+        url1 = #{record.url1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url2 != null">
+        url2 = #{record.url2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url3 != null">
+        url3 = #{record.url3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yikoujia != null">
+        yikoujia = #{record.yikoujia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.num != null">
+        num = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.endTime != null">
+        end_time = #{record.endTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update goods
+    set id = #{record.id,jdbcType=INTEGER},
+      good_name = #{record.goodName,jdbcType=VARCHAR},
+      good_essay = #{record.goodEssay,jdbcType=VARCHAR},
+      good_price = #{record.goodPrice,jdbcType=DECIMAL},
+      url = #{record.url,jdbcType=VARCHAR},
+      upload_time = #{record.uploadTime,jdbcType=VARCHAR},
+      begin_time = #{record.beginTime,jdbcType=VARCHAR},
+      less_money = #{record.lessMoney,jdbcType=VARCHAR},
+      one_time_money = #{record.oneTimeMoney,jdbcType=VARCHAR},
+      url1 = #{record.url1,jdbcType=VARCHAR},
+      url2 = #{record.url2,jdbcType=VARCHAR},
+      url3 = #{record.url3,jdbcType=VARCHAR},
+      yikoujia = #{record.yikoujia,jdbcType=VARCHAR},
+      num = #{record.num,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=INTEGER},
+      end_time = #{record.endTime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hmz.web.model.Goods">
+    update goods
+    <set>
+      <if test="goodName != null">
+        good_name = #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodEssay != null">
+        good_essay = #{goodEssay,jdbcType=VARCHAR},
+      </if>
+      <if test="goodPrice != null">
+        good_price = #{goodPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        upload_time = #{uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lessMoney != null">
+        less_money = #{lessMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="oneTimeMoney != null">
+        one_time_money = #{oneTimeMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="url1 != null">
+        url1 = #{url1,jdbcType=VARCHAR},
+      </if>
+      <if test="url2 != null">
+        url2 = #{url2,jdbcType=VARCHAR},
+      </if>
+      <if test="url3 != null">
+        url3 = #{url3,jdbcType=VARCHAR},
+      </if>
+      <if test="yikoujia != null">
+        yikoujia = #{yikoujia,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hmz.web.model.Goods">
+    update goods
+    set good_name = #{goodName,jdbcType=VARCHAR},
+      good_essay = #{goodEssay,jdbcType=VARCHAR},
+      good_price = #{goodPrice,jdbcType=DECIMAL},
+      url = #{url,jdbcType=VARCHAR},
+      upload_time = #{uploadTime,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=VARCHAR},
+      less_money = #{lessMoney,jdbcType=VARCHAR},
+      one_time_money = #{oneTimeMoney,jdbcType=VARCHAR},
+      url1 = #{url1,jdbcType=VARCHAR},
+      url2 = #{url2,jdbcType=VARCHAR},
+      url3 = #{url3,jdbcType=VARCHAR},
+      yikoujia = #{yikoujia,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      end_time = #{endTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
