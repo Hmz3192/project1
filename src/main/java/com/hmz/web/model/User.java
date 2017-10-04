@@ -1,7 +1,5 @@
 package com.hmz.web.model;
 
-import java.math.BigDecimal;
-
 public class User {
     private Integer id;
 
@@ -9,9 +7,9 @@ public class User {
 
     private String password;
 
-    private BigDecimal money;
+    private Double money;
 
-    public User(Integer id, String username, String password, BigDecimal money) {
+    public User(Integer id, String username, String password, Double money) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -20,6 +18,12 @@ public class User {
 
     public User() {
         super();
+    }
+
+    public User(String username, String password, double v) {
+        this.username = username;
+        this.password = password;
+        this.money = v;
     }
 
     public Integer getId() {
@@ -46,11 +50,11 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public BigDecimal getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(BigDecimal money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 }

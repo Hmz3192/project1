@@ -1,7 +1,5 @@
 package com.hmz.web.model;
 
-import java.math.BigDecimal;
-
 public class Goods {
     private Integer id;
 
@@ -9,7 +7,7 @@ public class Goods {
 
     private String goodEssay;
 
-    private BigDecimal goodPrice;
+    private Double goodPrice;
 
     private String url;
 
@@ -35,7 +33,9 @@ public class Goods {
 
     private String endTime;
 
-    public Goods(Integer id, String goodName, String goodEssay, BigDecimal goodPrice, String url, String uploadTime, String beginTime, String lessMoney, String oneTimeMoney, String url1, String url2, String url3, String yikoujia, Integer num, Integer state, String endTime) {
+    private String kind;
+
+    public Goods(Integer id, String goodName, String goodEssay, Double goodPrice, String url, String uploadTime, String beginTime, String lessMoney, String oneTimeMoney, String url1, String url2, String url3, String yikoujia, Integer num, Integer state, String endTime, String kind) {
         this.id = id;
         this.goodName = goodName;
         this.goodEssay = goodEssay;
@@ -52,6 +52,7 @@ public class Goods {
         this.num = num;
         this.state = state;
         this.endTime = endTime;
+        this.kind = kind;
     }
 
     public Goods() {
@@ -82,11 +83,11 @@ public class Goods {
         this.goodEssay = goodEssay == null ? null : goodEssay.trim();
     }
 
-    public BigDecimal getGoodPrice() {
+    public Double getGoodPrice() {
         return goodPrice;
     }
 
-    public void setGoodPrice(BigDecimal goodPrice) {
+    public void setGoodPrice(Double goodPrice) {
         this.goodPrice = goodPrice;
     }
 
@@ -184,5 +185,13 @@ public class Goods {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime == null ? null : endTime.trim();
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind == null ? null : kind.trim();
     }
 }

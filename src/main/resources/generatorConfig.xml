@@ -38,9 +38,9 @@
         </javaClientGenerator>
         <!--生成对应表及类名-->
         <!--<table tableName="comUser" domainObjectName="ComUser" ></table>-->
-        <!--<table tableName="user" domainObjectName="User" ></table>-->
+        <table tableName="user" domainObjectName="User" ></table>
         <!--<table tableName="watchRel" domainObjectName="WatchRel" ></table>-->
-        <!--<table tableName="goods" domainObjectName="Goods" ></table>-->
+        <table tableName="goods" domainObjectName="Goods" ></table>
         <!--<table tableName="competionGood" domainObjectName="CompetionGood" ></table>-->
 
         <!--enableCountByExample="false" enableUpdateByExample="false"-->

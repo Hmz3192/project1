@@ -1,6 +1,5 @@
 package com.hmz.web.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -315,52 +314,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceEqualTo(BigDecimal value) {
+        public Criteria andGoodPriceEqualTo(Double value) {
             addCriterion("good_price =", value, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceNotEqualTo(BigDecimal value) {
+        public Criteria andGoodPriceNotEqualTo(Double value) {
             addCriterion("good_price <>", value, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceGreaterThan(BigDecimal value) {
+        public Criteria andGoodPriceGreaterThan(Double value) {
             addCriterion("good_price >", value, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andGoodPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("good_price >=", value, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceLessThan(BigDecimal value) {
+        public Criteria andGoodPriceLessThan(Double value) {
             addCriterion("good_price <", value, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andGoodPriceLessThanOrEqualTo(Double value) {
             addCriterion("good_price <=", value, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceIn(List<BigDecimal> values) {
+        public Criteria andGoodPriceIn(List<Double> values) {
             addCriterion("good_price in", values, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceNotIn(List<BigDecimal> values) {
+        public Criteria andGoodPriceNotIn(List<Double> values) {
             addCriterion("good_price not in", values, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andGoodPriceBetween(Double value1, Double value2) {
             addCriterion("good_price between", value1, value2, "goodPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andGoodPriceNotBetween(Double value1, Double value2) {
             addCriterion("good_price not between", value1, value2, "goodPrice");
             return (Criteria) this;
         }
@@ -1182,6 +1181,76 @@ public class GoodsExample {
 
         public Criteria andEndTimeNotBetween(String value1, String value2) {
             addCriterion("end_time not between", value1, value2, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindIsNull() {
+            addCriterion("kind is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindIsNotNull() {
+            addCriterion("kind is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindEqualTo(String value) {
+            addCriterion("kind =", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindNotEqualTo(String value) {
+            addCriterion("kind <>", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindGreaterThan(String value) {
+            addCriterion("kind >", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindGreaterThanOrEqualTo(String value) {
+            addCriterion("kind >=", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindLessThan(String value) {
+            addCriterion("kind <", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindLessThanOrEqualTo(String value) {
+            addCriterion("kind <=", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindLike(String value) {
+            addCriterion("kind like", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindNotLike(String value) {
+            addCriterion("kind not like", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindIn(List<String> values) {
+            addCriterion("kind in", values, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindNotIn(List<String> values) {
+            addCriterion("kind not in", values, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindBetween(String value1, String value2) {
+            addCriterion("kind between", value1, value2, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindNotBetween(String value1, String value2) {
+            addCriterion("kind not between", value1, value2, "kind");
             return (Criteria) this;
         }
     }

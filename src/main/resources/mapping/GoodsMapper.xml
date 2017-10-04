@@ -6,7 +6,7 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="good_name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="good_essay" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="good_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="good_price" javaType="java.lang.Double" jdbcType="DOUBLE" />
       <arg column="url" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="upload_time" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="begin_time" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -19,6 +19,7 @@
       <arg column="num" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="state" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="end_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="kind" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -81,7 +82,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, good_name, good_essay, good_price, url, upload_time, begin_time, less_money, 
-    one_time_money, url1, url2, url3, yikoujia, num, state, end_time
+    one_time_money, url1, url2, url3, yikoujia, num, state, end_time, kind
   </sql>
   <select id="selectByExample" parameterType="com.hmz.web.model.GoodsExample" resultMap="BaseResultMap">
     select
@@ -118,14 +119,14 @@
       good_price, url, upload_time, 
       begin_time, less_money, one_time_money, 
       url1, url2, url3, yikoujia, 
-      num, state, end_time
-      )
+      num, state, end_time, 
+      kind)
     values (#{id,jdbcType=INTEGER}, #{goodName,jdbcType=VARCHAR}, #{goodEssay,jdbcType=VARCHAR}, 
-      #{goodPrice,jdbcType=DECIMAL}, #{url,jdbcType=VARCHAR}, #{uploadTime,jdbcType=VARCHAR}, 
+      #{goodPrice,jdbcType=DOUBLE}, #{url,jdbcType=VARCHAR}, #{uploadTime,jdbcType=VARCHAR}, 
       #{beginTime,jdbcType=VARCHAR}, #{lessMoney,jdbcType=VARCHAR}, #{oneTimeMoney,jdbcType=VARCHAR}, 
       #{url1,jdbcType=VARCHAR}, #{url2,jdbcType=VARCHAR}, #{url3,jdbcType=VARCHAR}, #{yikoujia,jdbcType=VARCHAR}, 
-      #{num,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{endTime,jdbcType=VARCHAR}
-      )
+      #{num,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{endTime,jdbcType=VARCHAR}, 
+      #{kind,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hmz.web.model.Goods">
     insert into goods
@@ -178,6 +179,9 @@
       <if test="endTime != null">
         end_time,
       </if>
+      <if test="kind != null">
+        kind,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -190,7 +194,7 @@
         #{goodEssay,jdbcType=VARCHAR},
       </if>
       <if test="goodPrice != null">
-        #{goodPrice,jdbcType=DECIMAL},
+        #{goodPrice,jdbcType=DOUBLE},
       </if>
       <if test="url != null">
         #{url,jdbcType=VARCHAR},
@@ -228,6 +232,9 @@
       <if test="endTime != null">
         #{endTime,jdbcType=VARCHAR},
       </if>
+      <if test="kind != null">
+        #{kind,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.hmz.web.model.GoodsExample" resultType="java.lang.Long">
@@ -249,7 +256,7 @@
         good_essay = #{record.goodEssay,jdbcType=VARCHAR},
       </if>
       <if test="record.goodPrice != null">
-        good_price = #{record.goodPrice,jdbcType=DECIMAL},
+        good_price = #{record.goodPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.url != null">
         url = #{record.url,jdbcType=VARCHAR},
@@ -287,6 +294,9 @@
       <if test="record.endTime != null">
         end_time = #{record.endTime,jdbcType=VARCHAR},
       </if>
+      <if test="record.kind != null">
+        kind = #{record.kind,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -297,7 +307,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       good_name = #{record.goodName,jdbcType=VARCHAR},
       good_essay = #{record.goodEssay,jdbcType=VARCHAR},
-      good_price = #{record.goodPrice,jdbcType=DECIMAL},
+      good_price = #{record.goodPrice,jdbcType=DOUBLE},
       url = #{record.url,jdbcType=VARCHAR},
       upload_time = #{record.uploadTime,jdbcType=VARCHAR},
       begin_time = #{record.beginTime,jdbcType=VARCHAR},
@@ -309,7 +319,8 @@
       yikoujia = #{record.yikoujia,jdbcType=VARCHAR},
       num = #{record.num,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
-      end_time = #{record.endTime,jdbcType=VARCHAR}
+      end_time = #{record.endTime,jdbcType=VARCHAR},
+      kind = #{record.kind,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -324,7 +335,7 @@
         good_essay = #{goodEssay,jdbcType=VARCHAR},
       </if>
       <if test="goodPrice != null">
-        good_price = #{goodPrice,jdbcType=DECIMAL},
+        good_price = #{goodPrice,jdbcType=DOUBLE},
       </if>
       <if test="url != null">
         url = #{url,jdbcType=VARCHAR},
@@ -362,6 +373,9 @@
       <if test="endTime != null">
         end_time = #{endTime,jdbcType=VARCHAR},
       </if>
+      <if test="kind != null">
+        kind = #{kind,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -369,7 +383,7 @@
     update goods
     set good_name = #{goodName,jdbcType=VARCHAR},
       good_essay = #{goodEssay,jdbcType=VARCHAR},
-      good_price = #{goodPrice,jdbcType=DECIMAL},
+      good_price = #{goodPrice,jdbcType=DOUBLE},
       url = #{url,jdbcType=VARCHAR},
       upload_time = #{uploadTime,jdbcType=VARCHAR},
       begin_time = #{beginTime,jdbcType=VARCHAR},
@@ -381,7 +395,9 @@
       yikoujia = #{yikoujia,jdbcType=VARCHAR},
       num = #{num,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
-      end_time = #{endTime,jdbcType=VARCHAR}
+      end_time = #{endTime,jdbcType=VARCHAR},
+      kind = #{kind,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

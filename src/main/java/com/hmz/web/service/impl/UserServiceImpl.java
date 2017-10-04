@@ -35,4 +35,13 @@ public class UserServiceImpl implements UserService{
 
 
     }
+
+    @Override
+    public boolean insertUser(String username, String password) {
+        User user = new User(username, password, 100.0);
+        if (userMapper.insertSelective(user) == 1) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,6 +1,5 @@
 package com.hmz.web.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -315,52 +314,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andMoneyEqualTo(BigDecimal value) {
+        public Criteria andMoneyEqualTo(Double value) {
             addCriterion("money =", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotEqualTo(BigDecimal value) {
+        public Criteria andMoneyNotEqualTo(Double value) {
             addCriterion("money <>", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyGreaterThan(BigDecimal value) {
+        public Criteria andMoneyGreaterThan(Double value) {
             addCriterion("money >", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andMoneyGreaterThanOrEqualTo(Double value) {
             addCriterion("money >=", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLessThan(BigDecimal value) {
+        public Criteria andMoneyLessThan(Double value) {
             addCriterion("money <", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andMoneyLessThanOrEqualTo(Double value) {
             addCriterion("money <=", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyIn(List<BigDecimal> values) {
+        public Criteria andMoneyIn(List<Double> values) {
             addCriterion("money in", values, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotIn(List<BigDecimal> values) {
+        public Criteria andMoneyNotIn(List<Double> values) {
             addCriterion("money not in", values, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andMoneyBetween(Double value1, Double value2) {
             addCriterion("money between", value1, value2, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andMoneyNotBetween(Double value1, Double value2) {
             addCriterion("money not between", value1, value2, "money");
             return (Criteria) this;
         }
