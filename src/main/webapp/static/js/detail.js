@@ -841,7 +841,7 @@ function getLove(){
 			if(data.length>0){
 				for(var i=0; i<8 && i<data.length; i++){
 					var content='<dl>'+
-								'<a href="detail.html?goodId='+data[i].pkId+'" target="_blank">'+
+
 								'<dt>'+
 								'<img src="'+data[i].thumbnailUrl+'" />'+
 								'</dt>'+
@@ -849,7 +849,6 @@ function getLove(){
 								'<p>Lot'+data[i].lotNum+':'+data[i].goodsName+'</p>'+
 								'<p>起拍价：<span>'+data[i].priceUnit+''+data[i].startPrice+'</span></p>'+
 								'</dd>'+
-								'</a>'+
 								'</dl>';
 					$(".detailLoveDiv").append(content);
 				}

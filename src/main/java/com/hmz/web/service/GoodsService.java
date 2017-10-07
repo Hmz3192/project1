@@ -7,4 +7,7 @@ import java.util.List;
 public interface GoodsService {
 
     List<Goods> selectByKind(Integer kind);
+
+    Goods selectOne(Integer id);
+
 }

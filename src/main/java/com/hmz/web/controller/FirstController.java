@@ -52,10 +52,27 @@ public class FirstController {
         5 ： 奢侈品*/
 //        System.out.println(kind);
         List<Goods> goods = new ArrayList<>();
-        if (kind == 0) {
-            goods = goodsService.selectByKind(kind);
-        }
+        goods = goodsService.selectByKind(kind);
         model.addAttribute("goodList", goods);
+        model.addAttribute("total", goods.size());
+        if (kind == 0) {
+            model.addAttribute("position", "推荐列表");
+        } else if (kind == 1) {
+            model.addAttribute("position", "拍卖会列表");
+        } else if (kind == 2) {
+            model.addAttribute("position", "艺术品列表");
+
+        } else if (kind == 3) {
+            model.addAttribute("position", "名表列表");
+
+        } else if (kind == 4) {
+            model.addAttribute("position", "珠宝列表");
+
+        } else if (kind == 5) {
+            model.addAttribute("position", "奢侈品列表");
+
+        }
+
         return "list";
     }
 }

@@ -21,9 +21,10 @@
 <%--<body onkeydown="entersearch()">--%>
 <body>
 <!--列表头部-->
-<div class="listNav">
+<div class="listNav" >
     当前位置：<a href="${pageContext.request.contextPath}/toMain">首页</a> >
-    <span id="listName">分类列表</span>
+    <span id="listName">分类列表</span> >
+    <span >${position}</span>
 </div>
 
 
@@ -34,7 +35,7 @@
 <div class="sortDivDiv">
     <div class="sortDiv rel">
         <p>
-            综合（<span name="total"></span>）
+            综合（<span name="total">${total}</span>）
         </p>
         <ul>
             <li id="sortMo">默认排序</li>
@@ -59,20 +60,22 @@
             <p1>无数据</p1>
         </c:if>
                 <c:forEach items="${goodList}" var="good">
+                    <a href="${pageContext.request.contextPath}/good/toDetail?id=${good.id}">
                 <dl>
-                    <a href="#" target="_blank">
+                    <%--<a href="#" target="_blank">--%>
                         <dt>
                             <img src="${good.url}" />
                         </dt>
-                    </a>
+                    <%--</a>--%>
                     <dd class="auctionDivDd2">
-                        <a href="${pageContext.request.contextPath}/toList?kind=1" target="_blank">
+                        <%--<a href="${pageContext.request.contextPath}/toList?kind=1" target="_blank">--%>
                             <p class="auctionName">名&nbsp;&nbsp;&nbsp; 称&nbsp;&nbsp; ：<span>${good.goodName}</span></p>
                             <p class="auctionAddress">起&nbsp;&nbsp;&nbsp; 拍&nbsp;&nbsp; ：<span>${good.goodPrice}</span></p>
                             <p class="auctionTime">开拍时间：<span>${good.beginTime}</span></p>
-                        </a>
+                        <%--</a>--%>
                     </dd>
                 </dl>
+                    </a>
                 </c:forEach>
     </div>
 </div>

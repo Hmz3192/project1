@@ -15,8 +15,7 @@
     <link rel= "stylesheet" href="${pageContext.request.contextPath}/static/css/index.css" />
 </head>
 <body>
-
-
+<!--引入头部-->
 <div class="header">
     <div class="headerTop">
         <ul class="headerUl1 fr">
@@ -39,10 +38,6 @@
         </ul>
     </div>
 </div>
-
-
-
-
 
 <!--头部固定搜索框-->
 <div class="index2Search">
