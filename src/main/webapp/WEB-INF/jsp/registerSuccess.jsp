@@ -160,6 +160,41 @@
     </style>
 </head>
 <body>
+
+
+<!--引入头部-->
+<div class="header">
+    <div class="headerTop">
+        <ul class="headerUl1 fr">
+            <li><font size="3">Hi&nbsp;,&nbsp;欢迎进入拍库!&nbsp;&nbsp;</font></li>
+
+            <c:if test="${sessionScope.username  == null }">
+                <li><a id="denglu" href="${pageContext.request.contextPath}/toLogin"><font size="3"> &nbsp;登录</font></a></li>
+                <li><a id="zhuce" href="${pageContext.request.contextPath}/toLogin"><font size="3" >注册</font></a>
+                        <%--<a id="tuichu"  href="javascript:;" >退出</a>--%>
+                </li>
+            </c:if>
+            <c:if test="${sessionScope.username  != null }">
+                <li> <a><font size="3" color="#FF0000">${sessionScope.username}</font></a></li>
+                <li> <a href="${pageContext.request.contextPath}/user/exit"> <font size="3">&nbsp;退出&nbsp;</font></a></li>
+            </c:if>
+
+            <%--<a id="yonghu"   href="#"> &nbsp;用户名</a>--%>
+
+
+            <li class="headerLi1">
+                <a href="javascript:;">
+                    <i class="ul1Tel"></i><font size="3">&nbsp;联系客服&nbsp;</font>
+                    <%--<span><img src="img/common/san.png" class="header_san"/></span>--%>
+                    <div class="headerDiv1 none">
+                        电话:<br>400-111-2016
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <!--中间内容-->
 <div class="registerSucDiv">
     <p>恭喜您，注册成功！</p>
@@ -167,7 +202,7 @@
         <!--尊敬的<span></span>，-->
         恭喜您已经成为拍库网会员！即刻可以开启时尚购物之旅！
     </p>
-    <a href="#">开始购物</a>
+    <a href="${pageContext.request.contextPath}/toMain">开始购物</a>
 </div>
 <!--今日推荐-->
 <div class="love">
@@ -196,8 +231,6 @@
     $(function(){
         //今日推荐
 
-
-
         getLove();
         roll($(".loveDiv"),$(".loveDiv ul"),$(".loveDiv ul li a"),$(".loveLeft"),$(".loveRight"));
     })
@@ -216,7 +249,7 @@
             success:function(data){
                 var data=data.goods;
                 for(var i=0; i<8; i++){
-                    var content='<a href="detail.html?goodId='+data[i].pkId+'"  target="_blank">'+
+                    var content='<a>'+
                         '<p class="loveImg"><img src="'+data[i].thumbnailUrl+'" /></p>'+
                         '<p class="loveP2">'+"Lot "+data[i].lotNum+": "+data[i].goodsName+'</p>'+
                         '<p >'+data[i].priceUnit+''+data[i].startPrice+'</p>'+

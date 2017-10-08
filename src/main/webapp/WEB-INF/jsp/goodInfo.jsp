@@ -17,6 +17,39 @@
 </head>
 <body>
 <!--头部-->
+<!--引入头部-->
+<div class="header">
+    <div class="headerTop">
+        <ul class="headerUl1 fr">
+            <li><font size="3">Hi&nbsp;,&nbsp;欢迎进入拍库!&nbsp;&nbsp;</font></li>
+
+            <c:if test="${sessionScope.username  == null }">
+                <li><a id="denglu" href="${pageContext.request.contextPath}/toLogin"><font size="3"> &nbsp;登录</font></a></li>
+                <li><a id="zhuce" href="${pageContext.request.contextPath}/toLogin"><font size="3" >注册</font></a>
+                        <%--<a id="tuichu"  href="javascript:;" >退出</a>--%>
+                </li>
+            </c:if>
+            <c:if test="${sessionScope.username  != null }">
+                <li> <a><font size="3" color="#FF0000">${sessionScope.username}</font></a></li>
+                <li> <a href="${pageContext.request.contextPath}/user/exit"><font size="3">&nbsp;退出&nbsp;</font></a></li>
+
+            </c:if>
+
+            <%--<a id="yonghu"   href="#"> &nbsp;用户名</a>--%>
+
+
+            <li class="headerLi1">
+                <a href="javascript:;">
+                    <i class="ul1Tel"></i><font size="3">&nbsp;联系客服&nbsp;</font>
+                    <%--<span><img src="img/common/san.png" class="header_san"/></span>--%>
+                    <div class="headerDiv1 none">
+                        电话:<br>400-111-2016
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 <!--导航部分-->
 <input value="" id="userStartPrice"  type="hidden"/>
 <input value="" id="userStartPrice2" type="hidden"/>
@@ -139,7 +172,7 @@
             <p class="detailBidP clearfix">
                 <span class="detailBidBid" onclick="isHaveMoney()">立即出价</span>
                 <span class="detailCollect" onclick="collectWay()">收藏</span>
-                <span class="detailFan" id="fanyiCH">翻译</span>
+                <%--<span class="detailFan" id="fanyiCH">翻译</span>--%>
             </p>
             <p class="detail24">
                 开拍前12小时内不可下单<br />

@@ -1,8 +1,6 @@
 $(function(){
 	//引入头部底部
-	if(!isLogin()){
-		window.location.href="login.html";
-	}
+
 	var type= getUrlParam("type");	
 	//是否显示推荐订单
 	if(isManager=="N"&&isChannel=="N"){

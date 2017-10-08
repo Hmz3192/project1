@@ -40,6 +40,10 @@ public class FirstController {
         return "index";
     }
 
+    @RequestMapping(value = "/toUser")
+    private String toUser() {
+        return "user";
+    }
 
     @RequestMapping(value = "/toList")
     private String toList(@RequestParam("kind") Integer kind, Model model) {

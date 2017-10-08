@@ -14,12 +14,46 @@
     <title>拍品列表</title>
     <%--<meta name="format-detection" content="telephone=no" />--%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/reset.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/artlist_1.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/artlist.css" />
     <link rel= "stylesheet" href="${pageContext.request.contextPath}/static/css/index.css" />
 
 </head>
 <%--<body onkeydown="entersearch()">--%>
 <body>
+
+<!--引入头部-->
+<div class="header">
+    <div class="headerTop">
+        <ul class="headerUl1 fr">
+            <li><font size="3">Hi&nbsp;,&nbsp;欢迎进入拍库!&nbsp;&nbsp;</font></li>
+
+            <c:if test="${sessionScope.username  == null }">
+                <li><a id="denglu" href="${pageContext.request.contextPath}/toLogin"><font size="3"> &nbsp;登录</font></a></li>
+                <li><a id="zhuce" href="${pageContext.request.contextPath}/toLogin"><font size="3" >注册</font></a>
+                        <%--<a id="tuichu"  href="javascript:;" >退出</a>--%>
+                </li>
+            </c:if>
+            <c:if test="${sessionScope.username  != null }">
+                <li> <a><font size="3" color="#FF0000">${sessionScope.username}</font></a></li>
+                <li> <a href="${pageContext.request.contextPath}/user/exit"><font size="3">&nbsp;退出&nbsp;</font></a></li>
+
+            </c:if>
+
+            <%--<a id="yonghu"   href="#"> &nbsp;用户名</a>--%>
+
+
+            <li class="headerLi1">
+                <a href="javascript:;">
+                    <i class="ul1Tel"></i><font size="3">&nbsp;联系客服&nbsp;</font>
+                    <%--<span><img src="img/common/san.png" class="header_san"/></span>--%>
+                    <div class="headerDiv1 none">
+                        电话:<br>400-111-2016
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 <!--列表头部-->
 <div class="listNav" >
     当前位置：<a href="${pageContext.request.contextPath}/toMain">首页</a> >
