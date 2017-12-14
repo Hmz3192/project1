@@ -32,7 +32,6 @@
             <c:if test="${sessionScope.username  != null }">
                 <li> <a><font size="3" color="#FF0000">${sessionScope.username}</font></a></li>
                 <li> <a href="${pageContext.request.contextPath}/user/exit"><font size="3">&nbsp;退出&nbsp;</font></a></li>
-
             </c:if>
 
             <%--<a id="yonghu"   href="#"> &nbsp;用户名</a>--%>

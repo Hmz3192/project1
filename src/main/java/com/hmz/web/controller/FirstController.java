@@ -74,7 +74,6 @@ public class FirstController {
 
         } else if (kind == 5) {
             model.addAttribute("position", "奢侈品列表");
-
         }
 
         return "list";
