@@ -54,8 +54,13 @@
                     <input type="text"  id="verificationCodeTempLogin"/>
                     <img src="" class="abcd" id="picCodeImgLogin" onclick="getValidateImg()"/>
                 </p>
+
                 <div class="cl"></div>
-                    <input type="submit" class="loginLog"  value="立即登录"/>
+                    <input type="submit" class="loginLog"  value="立即登录" onclick="display_alert()"/>
+                    <select id="select" >
+                        <option value="1">text1</option>
+                        <option value="2">text2</option>
+                    </select>
                 </form>
                 <p class="loginMima">
                     <a href="#">忘记密码?</a>
@@ -96,7 +101,17 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    function display_alert() {
+        var myselect = document.getElementById("select");
+        var index = myselect.selectedIndex;
+        alert(myselect.options[index].value);
+        if(myselect.options[index].value==1){
+            window.location.href="xxx.html";
+        }else
+            window.location.href="222.html";
+    }
+</script>
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/md5.js" ></script>
