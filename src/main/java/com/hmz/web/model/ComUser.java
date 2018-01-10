@@ -1,6 +1,8 @@
 package com.hmz.web.model;
 
-public class ComUser {
+import java.io.Serializable;
+
+public class ComUser implements Serializable {
     private Integer id;
 
     private Integer comid;

@@ -1,9 +1,10 @@
 package com.hmz.web.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoodsExample {
+public class GoodsExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;

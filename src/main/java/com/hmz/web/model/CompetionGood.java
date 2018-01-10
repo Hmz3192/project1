@@ -1,6 +1,8 @@
 package com.hmz.web.model;
 
-public class CompetionGood {
+import java.io.Serializable;
+
+public class CompetionGood implements Serializable {
     private Integer id;
 
     private Integer goodId;

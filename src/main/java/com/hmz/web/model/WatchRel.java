@@ -1,6 +1,8 @@
 package com.hmz.web.model;
 
-public class WatchRel {
+import java.io.Serializable;
+
+public class WatchRel implements Serializable {
     private Integer id;
 
     private Integer userId;
