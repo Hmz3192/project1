@@ -21,12 +21,12 @@
 
     <!-- 连接池基本参数配置，类似数据库连接池 -->
     <context:property-placeholder location="classpath*:redis.properties" />
-
+    <!-- jedis 配置 -->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}" />
         <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
     </bean>
-
+    <!-- redis服务器中心 -->
     <!-- 连接池配置，类似数据库连接池 -->
     <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >
         <property name="hostName" value="${redis.host}"></property>
@@ -50,4 +50,26 @@
                     class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
         </property>
     </bean>
+
+    <!-- AOP cache配置 -->
+ <!--   <bean id="methodCacheInterceptor" class="com.crossoverJie.intercept.MethodCacheInterceptor">
+        <property name="redisUtil" ref="redisUtil"/>
+    </bean>
+    <bean id="redisUtil" class="com.crossoverJie.util.RedisUtil">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>-->
+
+    <!--配置切面拦截方法 -->
+   <!-- <aop:config proxy-target-class="true">
+        &lt;!&ndash;将com.crossoverJie.service包下的所有select开头的方法加入拦截
+        去掉select则加入所有方法w
+        &ndash;&gt;
+        <aop:pointcut id="controllerMethodPointcut" expression="
+        execution(* com.hmz.web.service.*.select*(..))"/>
+
+        <aop:pointcut id="selectMethodPointcut" expression="
+        execution(* com.hmz.web.dao..*Mapper.select*(..))"/>
+
+        <aop:advisor advice-ref="methodCacheInterceptor" pointcut-ref="controllerMethodPointcut"/>
+    </aop:config>-->
 </beans>

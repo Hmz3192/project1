@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Service
-@Transactional(rollbackFor = Exception.class)
+@Transactional
 public class UserServiceImpl implements UserService{
 
     @Resource

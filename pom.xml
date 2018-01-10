@@ -234,7 +234,7 @@
         <version>2.1</version>
         <configuration>
           <uriEncoding>UTF-8</uriEncoding>
-          <port>8111</port>
+          <port>8080</port>
         </configuration>
       </plugin>
       <plugin>
